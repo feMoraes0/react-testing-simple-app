@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import App from "./App";
 
 // how to check element roles:
@@ -7,7 +7,16 @@ import App from "./App";
 // check more details at https://testing-library.com/docs/dom-testing-library/api-debugging/#logroles
 
 test("Button click flow", () => {
+  // mount the component
   render(<App />);
+  // get the button
   const buttonElement = screen.getByRole("button", { name: /blue/i });
+  // initial colour assertion
   expect(buttonElement).toHaveClass("red");
+  // button click
+  fireEvent.click(buttonElement);
+  // text change assertion
+  expect(buttonElement).toHaveTextContent(/red/i);
+  // colour change assertion
+  expect(buttonElement).toHaveClass("blue");
 });
