@@ -39,5 +39,24 @@ test("checkbox flow", () => {
   // validate state after the click
   expect(buttonElement).toBeEnabled();
   expect(checkboxElement).not.toBeChecked();
+});
 
+test("interact and disable flow", () => {
+  render(<App />);
+  const buttonElement = screen.getByRole("button", { name: /blue/i });
+  const checkboxElement = screen.getByRole("checkbox", { name: /disable button/i });
+  expect(buttonElement).toBeEnabled();
+  expect(checkboxElement).not.toBeChecked();
+  // interacting with the button
+  fireEvent.click(buttonElement);
+  expect(buttonElement).toHaveTextContent(/red/i);
+  expect(checkboxElement).not.toBeChecked();
+  // interacting with the checkbox
+  fireEvent.click(checkboxElement);
+  expect(buttonElement).toHaveClass("gray");
+  expect(checkboxElement).toBeChecked();
+  // interaction with the checkbox again
+  fireEvent.click(checkboxElement);
+  expect(buttonElement).toHaveTextContent(/red/i);
+  expect(checkboxElement).not.toBeChecked();
 });
