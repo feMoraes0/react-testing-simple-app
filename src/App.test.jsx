@@ -28,5 +28,16 @@ test("checkbox flow", () => {
   const checkboxElement = screen.getByRole("checkbox", { name: /disable button/i });
   // initial state
   expect(buttonElement).toBeEnabled();
-  expect(buttonElement).not.toBeChecked();
+  expect(checkboxElement).not.toBeChecked();
+  // ckeckbox first click - disable
+  fireEvent.click(checkboxElement);
+  // validate state after the click
+  expect(buttonElement).toBeDisabled();
+  expect(checkboxElement).toBeChecked();
+  // checkbox second click - enable
+  fireEvent.click(checkboxElement);
+  // validate state after the click
+  expect(buttonElement).toBeEnabled();
+  expect(checkboxElement).not.toBeChecked();
+
 });
