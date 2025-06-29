@@ -13,13 +13,13 @@ test("Button click flow", () => {
   // get the button
   const buttonElement = screen.getByRole("button", { name: /blue/i });
   // initial colour assertion
-  expect(buttonElement).toHaveClass("red");
+  expect(buttonElement).toHaveClass("medium-violet-red");
   // button click
   fireEvent.click(buttonElement);
   // text change assertion
   expect(buttonElement).toHaveTextContent(/red/i);
   // colour change assertion
-  expect(buttonElement).toHaveClass("blue");
+  expect(buttonElement).toHaveClass("midnight-blue");
 });
 
 test("checkbox flow", () => {
@@ -50,6 +50,7 @@ test("interact and disable flow", () => {
   expect(checkboxElement).not.toBeChecked();
   // interacting with the button
   fireEvent.click(buttonElement);
+  expect(buttonElement).toHaveClass("midnight-blue");
   expect(buttonElement).toHaveTextContent(/red/i);
   expect(checkboxElement).not.toBeChecked();
   // interacting with the checkbox
@@ -58,6 +59,7 @@ test("interact and disable flow", () => {
   expect(checkboxElement).toBeChecked();
   // interaction with the checkbox again
   fireEvent.click(checkboxElement);
+  expect(buttonElement).toHaveClass("midnight-blue");
   expect(buttonElement).toHaveTextContent(/red/i);
   expect(checkboxElement).not.toBeChecked();
 });
