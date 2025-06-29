@@ -13,6 +13,9 @@ function App() {
       >
         Change to {buttonText}
       </button>
+      <br />
+      <input type="checkbox" id="disable-button" defaultChecked={false} />
+      <label htmlFor="disable-button">Disable button</label>
     </div>
   );
 }

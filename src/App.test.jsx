@@ -20,3 +20,13 @@ test("Button click flow", () => {
   // colour change assertion
   expect(buttonElement).toHaveClass("blue");
 });
+
+test("checkbox flow", () => {
+  render(<App />);
+  // get the elements
+  const buttonElement = screen.getByRole("button", { name: /blue/i });
+  const checkboxElement = screen.getByRole("checkbox", { name: /disable button/i });
+  // initial state
+  expect(buttonElement).toBeEnabled();
+  expect(buttonElement).not.toBeChecked();
+});
