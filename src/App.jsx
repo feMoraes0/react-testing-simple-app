@@ -1,12 +1,12 @@
 import { useState } from "react";
 import "./App.css";
-import kebabCaseToTileCase from "./helper";
+import { kebabCaseToTitleCase } from "./helper";
 
 function App() {
   const [currentColor, setCurrentColor] = useState('medium-violet-red');
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const nextColorClass = currentColor === 'medium-violet-red' ? 'midnight-blue' : 'medium-violet-red'
-  const buttonText = kebabCaseToTileCase(nextColorClass);
+  const buttonText = kebabCaseToTitleCase(nextColorClass);
   const buttonClassName = buttonDisabled ? "gray" : currentColor;
 
   return (

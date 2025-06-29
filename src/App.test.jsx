@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import App from "./App";
-import kebabCaseToTileCase from "./helper";
+import { kebabCaseToTitleCase } from "./helper";
 
 // how to check element roles:
 // use logRoles(<App />) to check all roles inside the App component
@@ -66,14 +66,14 @@ test("interact and disable flow", () => {
 
 describe("Kebab case to Tile Case helper", () => {
   test("entry with no dash, single word parameter", () => {
-    expect(kebabCaseToTileCase("red")).toBe("Red");
+    expect(kebabCaseToTitleCase("red")).toBe("Red");
   });
 
   test("entry with one dash, two words parameter", () => {
-    expect(kebabCaseToTileCase("midnight-blue")).toBe("Midnight Blue");
+    expect(kebabCaseToTitleCase("midnight-blue")).toBe("Midnight Blue");
   });
 
   test("entry with multi dashes, multi words parameter", () => {
-    expect(kebabCaseToTileCase("medium-violet-red")).toBe("Medium Violet Red");
+    expect(kebabCaseToTitleCase("medium-violet-red")).toBe("Medium Violet Red");
   });
 });
